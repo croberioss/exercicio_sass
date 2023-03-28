@@ -1,0 +1,44 @@
+@use 'config/reset.scss';
+@use 'config/variaveis.scss';
+@use 'sections/header.scss';
+@use 'sections/section.scss';
+
+body {
+    background-color: variaveis.$corFundoBody;
+
+    li {
+        list-style: none;
+    }
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@function somaMobile($mobile: 767px) {
+    @return $mobile + 1;
+}
+
+@media screen and (max-width: variaveis.$tablet ) and (min-width: somaMobile()) {
+    .container {
+        max-width: 80%;
+
+        .products {
+            grid-template-columns: repeat(2, 48.5%);
+            column-gap: 3%;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .products {
+        display: block;
+
+            .product-item  {
+        margin-bottom: 32px;
+        }
+    }
+}
+
